@@ -6,8 +6,10 @@
  * Time: 3:17 PM
  */
 
-require("initialization.php");
+session_start();  /* starts session */
+require("functions.php");  /* includes all necessary functions */
+$connect = connectToDatabase();  /* Starts connection to database */
 
-array_push($_SESSION['cart'], $_SESSION["userId"]);
-$_SESSION["cartJson"] = json_encode($_SESSION["cart"]);
-echo $_SESSION["cartJson"];
+
+$_GET["cartJson"] = json_encode($_SESSION["cart"]);
+echo $_GET["cartJson"];
