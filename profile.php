@@ -9,7 +9,8 @@
 
 require("inc/initialization.php");
 
-if (empty($_SESSION["logged"])){
+
+if (empty($_SESSION["logged"])) {
     header("Location: index.php");
 }
 ?>
@@ -27,48 +28,83 @@ include("nav.php");
 ?>
 <div class="container">
 
-    <div class="card horizontal">
-        <div class="card-stacked">
+    <div class="orders right">
+        <?php include("inc/getOrders.php");
+        foreach ($orders as $order) {
+            ?>
+            <div class="card horizontal order-status">
+                <div class="card-image">
+                    <img src="media/products/<?php echo getOrderImage($order["productId"]); ?>">
+                </div>
+                <div class="card-content">
+                    <h5><?php echo getOrderName($order["productId"]); ?></h5>
+                    <p>Status: <?php echo $order["status"] ?></p>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+    <div class="wishlist right">
+
+    </div>
+    <div class="adresslist right">
+        <div class="card horizontal">
             <div class="card-content">
-                <ul class="collection with-header user-options">
-                    <li class="collection-header"><h4><?php echo $_SESSION["username"]; ?></h4></li>
-                    <li class="collection-item"><a href="orders.php">Mijn bestellingen</a></li>
-                    <li class="collection-item"><a href="wishlist.php">Mijn verlanglijst</a></li>
-                    <li class="collection-item"><a href="adressbook.php">Mijn adresboek</a></li>
-                    <li class="collection-item"><a href="change-password">Wachtwoord wijzigen</a></li>
-                </ul>
-                <a class="right waves-effect waves-light red btn modal-trigger" href="#deleteModal">Verwijder account</a>
+                <h5>Uw huidige factuuradres</h5>
+                <label>Naam</label>
+                <p>Hans Verweer</p>
+                <label>Straatnaam & huisnummer</label>
+                <p>Cornelisstraat 15</p>
+                <label>Postcode & woonplaats</label>
+                <p>3053 HB, IJSSELMUIDEN</p>
+                <label>Land</label>
+                <p>Nederland</p><br/>
             </div>
-
-            <div class="orders">
-                orders
-            </div>
-            <div class="wishlist">
-                wishlist
-            </div>
-            <div class="adresslist">
-                adresslist
-            </div>
-            <div class="change-password">
-                change-password
-            </div>
-
-
-
-
-
-            <div id="deleteModal" class="modal">
-                <div class="modal-content">
-                    <h4>Weet je zeker dat je je account wilt verwijderen?</h4>
-                </div>
-                <div class="modal-footer">
-                    <a href="inc/deleteUser.php?videoId=&userId=<?php echo $_SESSION["userId"]; ?>"
-                       class="waves-effect waves-green btn-flat">Ja</a>
-                    <a class="modal-close waves-effect waves-green btn-flat">Nee</a>
-                </div>
-            </div>
+            <a class="btn blue change-btn">Veranderen</a>
         </div>
     </div>
+    <div class="change-password right">
+        <div class="card">
+            <div class="card-content">
+                <div class="input-field col s6">
+                    <input placeholder="Nieuw wachtwoord" id="password" type="text" class="validate">
+                    <label for="first_name">Nieuw wachtwoord</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Nog een keer" id="password-twice" type="text" class="validate">
+                    <label for="first_name">Wachtwoord</label>
+                </div>
+                <br/>
+
+                <button class="btn blue">Bevestigen</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <ul class="collection with-header user-options left">
+        <li class="collection-header"><h4><?php echo $_SESSION["username"]; ?></h4></li>
+        <li class="collection-item"><a onclick="showContent('orders');">Mijn bestellingen</a></li>
+        <li class="collection-item"><a onclick="showContent('wishlist');">Mijn verlanglijst</a></li>
+        <li class="collection-item"><a onclick="showContent('adresslist');">Factuur adres</a></li>
+        <li class="collection-item"><a onclick="showContent('change-password');">Wachtwoord wijzigen</a></li>
+        <li class="collection-item"><a class="modal-trigger remove-btn" href="#deleteModal">Verwijder account</a></li>
+    </ul>
+</div>
+
+
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h4>Weet je zeker dat je je account wilt verwijderen?</h4>
+    </div>
+    <div class="modal-footer">
+        <a href="inc/deleteUser.php?videoId=&userId=<?php echo $_SESSION["userId"]; ?>"
+           class="waves-effect waves-green btn-flat">Ja</a>
+        <a class="modal-close waves-effect waves-green btn-flat">Nee</a>
+    </div>
+</div>
 
 </div>
 </body>
