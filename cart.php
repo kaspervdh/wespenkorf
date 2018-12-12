@@ -23,7 +23,7 @@ require("nav.php");
 <div class="container">
     <h3>Uw winkelwagen:</h3>
     <?php
-    if (empty($_SESSION["cart"])) {
+    if (empty($_SESSION["cartDisplay"])) {
 
         ?>
         <p>Er zijn nog geen producten in de winkelwagen.</p>
@@ -33,7 +33,7 @@ require("nav.php");
     ?>
     <div id="product-container">
         <?php
-        if (!empty($_SESSION["cart"])){
+        if (!empty($_SESSION["cartDisplay"])){
         foreach ($products as $product) {
             ?>
             <div class="product product<?php echo $product['id']; ?>">
