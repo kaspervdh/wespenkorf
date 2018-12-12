@@ -8,11 +8,9 @@
 
 if (isset($_SESSION["cart"])) {
 
-    $cart = join("','", $_SESSION["cart"]);
+    $cart = join("','", $_SESSION["cartDisplay"]);
     $selectProductsQuery = "SELECT * FROM products WHERE id IN ('". $cart ."')";
-
     $resource = mysqli_query($connect, $selectProductsQuery);
-
     $products = array();
 
     while($result = mysqli_fetch_assoc($resource))
