@@ -1,0 +1,158 @@
+body{
+    margin: 0;
+    font-family: 'Open Sans', sans-serif!important;
+    background-color: #fff;
+}
+
+.homepage{
+    background-image: url("../media/onsite/background.png");
+    background-repeat: no-repeat, repeat;
+    background-color: black;
+}
+
+.cart{
+}
+
+#product-container{
+    margin: 0 auto!important;
+    width: 1100px;
+}
+
+.product-image{
+    width: 200px;
+    height: 200px;
+}
+.product{
+    margin: 5px;
+    float: left;
+    max-width:350px;
+    max-height:350px;
+    height: 400px!important;
+}
+
+.nav-item{
+    color: #2e3436;
+    font-weight: bold;
+}
+
+.nav-wrapper{
+    background-color: #ffffff !important;
+}
+
+#copyright-footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    opacity: 0.8;
+}
+
+.logform-container{
+    padding: 20px;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    background: #fff;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    display: block;
+    margin: 30 auto;
+    min-height: 0;
+    width: 500px;
+
+}
+
+#join-nu-button{
+    margin-top: 20px;
+}
+
+#header{
+    margin-top: 180px!important;
+    color: white;
+}
+
+.nav{
+    background-color: #f6f6f6;
+ }
+
+.active a{
+    background-color: #f2f1f1!important;
+    color: #000000!important;
+}
+
+.nav a{
+     color: #ffffff!important;
+ }
+
+.nav a:hover{
+    color: #000000!important;
+}
+
+
+.clearfix {
+    overflow: auto;
+}
+
+.button-container{
+    display: block;
+    float: left;
+}
+
+.dropdown-content{
+    overflow: visible !important;
+}
+
+#name-menu{
+    color: white;
+}
+
+#usermenu{
+    width: 230px!important;
+    height: 180px!important;
+    background-color: #383838;
+}
+
+.decisions{
+    position: absolute;
+    right: 600;
+    bottom: 50;
+}
+
+.nav-dropdown li>a:hover{
+    background-color: #464646!important;
+}
+
+.nav-dropdown li:hover, .nav-dropdown li.active {
+    background-color: #464646!important;
+}
+
+.nav-dropdown li>a, .nav-dropdown li>span{
+    color: white!important;
+}
+
+.logout-form-menu{
+    margin-top: 5px;
+    height: 0px!important;
+    text-align: center;
+}
+
+#shopping-cart{
+    margin-top: 15px;
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+.cart-amount{
+    position: absolute;
+    top: 20;
+    color: green;
+}
+
+.grab{
+    cursor: pointer;
+}
+
+
