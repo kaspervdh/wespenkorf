@@ -1,6 +1,12 @@
 $(document).ready(function () {
     $('.modal').modal();
 
+    $('.orders').show();
+    $('.wishlist').hide();
+    $('.adresslist').hide();
+    $('.change-password').hide();
+
+
     $('.dropdown-trigger').dropdown({
         inDuration: 300,
         outDuration: 225,
@@ -10,6 +16,35 @@ $(document).ready(function () {
         alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
 });
+
+function showContent(type){
+
+    if (type == "orders") {
+        $('.orders').show();
+        $('.wishlist').hide();
+        $('.adresslist').hide();
+        $('.change-password').hide();
+    }
+    if (type == "wishlist") {
+        $('.wishlist').show();
+        $('.orders').hide();
+        $('.adresslist').hide();
+        $('.change-password').hide();
+    }
+    if (type == "adresslist") {
+        $('.adresslist').show();
+        $('.orders').hide();
+        $('.wishlist').hide();
+        $('.change-password').hide();
+
+    }
+    if (type == "change-password") {
+        $('.change-password').show();
+        $('.orders').hide();
+        $('.wishlist').hide();
+        $('.adresslist').hide();
+    }
+}
 
 function addToCart(productId) {
 
@@ -22,8 +57,8 @@ function addToCart(productId) {
             productId: productId
         },
 
-        success: function () {
-
+        success: function (data) {
+            console.log(data);
             var currentVal = parseInt($(".cart-amount").text());    //get current cart amount
             var newVal = currentVal + 1;    //add 1
             $(".cart-amount").text(newVal);     //set new amount
@@ -59,29 +94,29 @@ function placeOrder(userId) {
         success: function (data) {
         console.log(data);
 
-            // $.ajax({ //Post to db
-            //     url: "inc/placeOrder.php",
-            //     type: "POST",
-            //     data: {
-            //         productId: productId,
-            //         userId: userId
-            //     },
-            //     success: function (data) {
-            //
-            //         // $.ajax({ //post to arduino
-            //         //     url: "1.1.1.1", //IP of Arduino
-            //         //     type: "POST",
-            //         //     data: {productId: productId},
-            //         //     dataType: 'jsonp',
-            //         //     contentType: 'application/json',
-            //         //     crossDomain: true,
-            //         //     success: function (data) {
-            //         //
-            //         //
-            //         //     }
-            //         // });
-            //     }
-            // });
+            $.ajax({ //Post to db
+                url: "inc/placeOrder.php",
+                type: "POST",
+                data: {
+                    userId: userId
+                },
+                success: function (data) {
+                    console.log(data);
+
+                    // $.ajax({ //post to arduino
+                    //     url: "1.1.1.1", //IP of Arduino
+                    //     type: "POST",
+                    //     data: {productId: productId},
+                    //     dataType: 'jsonp',
+                    //     contentType: 'application/json',
+                    //     crossDomain: true,
+                    //     success: function (data) {
+                    //
+                    //
+                    //     }
+                    // });
+                }
+            });
         }
     });
 }
