@@ -10,8 +10,54 @@ body{
     background-color: black;
 }
 
+.info-holder{
+    height: 700px;
+}
+
+.change-password{
+    width: 700px;
+    height: 670px;
+}
+
+.order-status{
+    margin: 15 auto;
+    width: 380px!important;
+    height: 142px!important;
+}
+
+.change-btn{
+    position: absolute;
+    bottom: 5;
+    right: 5;
+}
+
+.remove-btn{
+    color: red;
+}
+
+.orders{
+    margin: 0 130 auto;
+    width: 700px;
+    height: 670px;
+}
+
+.adresslist{
+    width: 700px;
+    height: 670px;
+}
+
+.collection-item{
+    cursor: pointer;
+}
+
 .user-options{
     width: 300px;
+}
+
+.delete-account{
+    position: absolute;
+    bottom: 10;
+    right: 10;
 }
 
 #product-container{
