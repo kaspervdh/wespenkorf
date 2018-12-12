@@ -10,7 +10,8 @@ body{
     background-color: black;
 }
 
-.cart{
+.user-options{
+    width: 300px;
 }
 
 #product-container{
