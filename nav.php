@@ -20,7 +20,6 @@ if(!empty($_SESSION["logged"]) == 0){
             <li><a class="nav-item" href="index.php">Home</a></li>
         </ul>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a class="nav-item" href="shop.php">Shop</a></li>
             <li><a class="nav-item" href="login.php">Inloggen</a></li>
         </ul>
     </div>
