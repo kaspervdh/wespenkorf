@@ -55,9 +55,6 @@ if (!empty($username) && !empty($password) && !empty($passwordConfirm) && !empty
             if ($regQuery){
                 $_SESSION["successRegister"] = 1;
                 unset($_SESSION["errorLogin"]);
-                mkdir("../media/users/$username");
-                mkdir("../media/users/$username/avatar");
-                mkdir("../media/users/$username/videos");
                 header("Location:../login.php");
             }
             else{
