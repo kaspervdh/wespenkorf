@@ -38,3 +38,5 @@ if(empty($_SESSION["cart"])) {
 $_SESSION["cartItemCount"] = count($_SESSION["cartDisplay"]);
 
 print_r($_SESSION["cart"]);
+print_r($_SESSION['cartDisplay']);
+
