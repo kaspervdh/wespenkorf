@@ -54,6 +54,7 @@ function getOrderImage($productId){
     return $image[0];
 }
 
+
 function getOrderName($productId){
     $connect = connectToDatabase();  /* Starts connection to database */
 
