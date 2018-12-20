@@ -42,7 +42,7 @@ if(!empty($_SESSION["logged"]) == 1){
 
     <ul id='usermenu' class='nav-dropdown dropdown-content'>
         <li><a class="nav-item" href="profile.php">Mijn account</a></li>
-        <li><a  href="settings.php">Instellingen</a></li>
+        <li><a  href="shop.php">Shop</a></li>
         <li><form class="logout-form-menu logout form-horizontal" method="POST">
                 <button type="submit" name="logout" class="logout-button-menu red waves-effect waves-light btn">Uitloggen</button>
             </form>
