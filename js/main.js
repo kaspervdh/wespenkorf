@@ -5,6 +5,8 @@ $(document).ready(function () {
     $('.wishlist').hide();
     $('.adresslist').hide();
     $('.change-password').hide();
+    $('.checked-change-password').hide();
+    $('.check-password').hide();
 
 
     $('.dropdown-trigger').dropdown({
@@ -40,6 +42,17 @@ function showContent(type){
     }
     if (type == "change-password") {
         $('.change-password').show();
+        $('.check-password').show();
+        $('.checked-change-password').hide();
+        $('.orders').hide();
+        $('.wishlist').hide();
+        $('.adresslist').hide();
+    }
+
+    if (type == "checked-change-password") {
+        $('.change-password').show();
+        $('.checked-change-password').show();
+        $('.check-password').hide();
         $('.orders').hide();
         $('.wishlist').hide();
         $('.adresslist').hide();
@@ -86,6 +99,39 @@ function removeFromCart(productId) {
 
 }
 
+function verifyPassword() {             //function to change passwords
+    var password = $(".verifyPassword").val();
+    $.ajax({                            //Check if given password is correct
+        type: "POST",
+        url: "inc/checkPassword.php",
+        data: {
+            password: password
+        },
+
+        success: function (data) {
+            if (data == "verified"){    //Given password is correct show change password
+                showContent("checked-change-password");
+
+                $.ajax({
+                    type: "POST",
+                    url: "inc/checkPassword.php",
+                    data: {
+                        password: password,
+                        passwordTwice: passwordTwice
+                    },
+
+                    success: function (data) {
+                        if (data == "verified"){
+                            showContent("checked-change-password");
+
+                        }
+                    }
+            }
+        }
+    });
+
+}
+
 function placeOrder(userId) {
 
     $.ajax({ //Get json
@@ -93,6 +139,8 @@ function placeOrder(userId) {
         type: "GET",
         success: function (data) {
         console.log(data);
+        var jsonString = JSON.parse(data);
+            console.log(jsonString);
 
             $.ajax({ //Post to db
                 url: "inc/placeOrder.php",
@@ -103,18 +151,19 @@ function placeOrder(userId) {
                 success: function (data) {
                     console.log(data);
 
-                    // $.ajax({ //post to arduino
-                    //     url: "1.1.1.1", //IP of Arduino
-                    //     type: "POST",
-                    //     data: {productId: productId},
-                    //     dataType: 'jsonp',
-                    //     contentType: 'application/json',
-                    //     crossDomain: true,
-                    //     success: function (data) {
-                    //
-                    //
-                    //     }
-                    // });
+                    $.ajax({ //post to arduino
+                        url: "http://192.168.0.20/", //IP of Arduino
+                        type: "POST",
+                        data: jsonString,
+                        dataType: 'jsonp',
+                        contentType: 'application/json',
+                        crossDomain: true,
+                        success: function (data) {
+
+
+                        }
+                    });
+
                 }
             });
         }
