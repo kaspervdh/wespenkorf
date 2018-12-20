@@ -31,17 +31,32 @@ include("nav.php");
     <div class="orders right">
         <?php include("inc/getOrders.php");
         foreach ($orders as $order) {
-            ?>
-            <div class="card horizontal order-status">
-                <div class="card-image">
-                    <img src="media/products/<?php echo getOrderImage($order["productId"]); ?>">
+            include("inc/getOrderProduct.php");
+            foreach ($products as $product) {
+                ?>
+                <div class="card horizontal order-status">
+                    <div class="card-image">
+                        <img src="media/products/<?php echo getOrderImage($product["productId"]); ?>">
+                    </div>
+                    <div class="card-content">
+                        <h5><?php echo getOrderName($product["productId"]); ?></h5>
+                        <p>Quantity: <?php echo $product["quantity"]?> </p>
+                        <p>Status: <?php
+                            $status = $order["status"];
+                            if ($status == 1){
+                                echo "Order word verwerkt";
+                            }
+                            if ($status == 2){
+                                echo "Bij pakketdienst";
+                            }
+                            if ($status == 3){
+                                echo "Afgeleverd";
+                            }
+                            ?></p>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h5><?php echo getOrderName($order["productId"]); ?></h5>
-                    <p>Status: <?php echo $order["status"] ?></p>
-                </div>
-            </div>
-            <?php
+                <?php
+            }
         }
         ?>
     </div>
@@ -65,19 +80,29 @@ include("nav.php");
         </div>
     </div>
     <div class="change-password right">
-        <div class="card">
+        <div class="card checked-change-password">
             <div class="card-content">
                 <div class="input-field col s6">
-                    <input placeholder="Nieuw wachtwoord" id="password" type="text" class="validate">
+                    <input placeholder="Nieuw wachtwoord" id="password" type="password" class="validate">
                     <label for="first_name">Nieuw wachtwoord</label>
                 </div>
                 <div class="input-field col s6">
-                    <input placeholder="Nog een keer" id="password-twice" type="text" class="validate">
+                    <input placeholder="Nog een keer" id="password-twice" type="password" class="validate">
                     <label for="first_name">Wachtwoord</label>
                 </div>
                 <br/>
 
                 <button class="btn blue">Bevestigen</button>
+            </div>
+        </div>
+
+        <div class="card check-password">
+            <div class="card-content">
+                <div class="input-field col s6">
+                    <input placeholder="Huidig wachtwoord" id="password-verify" type="password" class="validate verifyPassword">
+                    <label for="first_name">Huidig wachtwoord</label>
+                </div>
+                <button class="btn blue" onclick="verifyPassword();">Bevestigen</button>
             </div>
         </div>
 
