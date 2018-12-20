@@ -10,22 +10,32 @@ session_start();  /* starts session */
 require("functions.php");  /* includes all necessary functions */
 $connect = connectToDatabase();  /* Starts connection to database */
 
-echo $token = getToken(25);
+$token = getToken(25);
 
 // count duplicates in array_count_values() function
-$quantity = array_count_values($_SESSION["cartDisplay"]);
+$productsCart = array_count_values($_SESSION["cartDisplay"]);
 
-print_r($quantity);
-$orderId = 1;
 
-foreach($quantity as count($quantity)){
-    $productOrderQuery = "insert into `orderproduct` (`orderId`, `productId`, `quantity`) values (`{$orderId}`";
-    foreach($_SESSION['cartDisplay'] as $key => $productId)
-    {
-        $productOrderQuery .= "$productId";
-    }
-    $productOrderQuery .= ")";
+$newOrderQuery = "INSERT INTO `orders` (`id`, `userId`, `trackingCode`, `status`, `date`) 
+                      VALUES (NULL, {$_SESSION["userId"]}, '{$token}', 1, '11-11-11')";
+    mysqli_query($connect, $newOrderQuery);
+
+$highestOrderQuery = "SELECT MAX(`id`) FROM `orders`";
+
+$resource = mysqli_query($connect, $highestOrderQuery);
+
+$highestOrder = mysqli_fetch_row($resource);
+
+$orderId = $highestOrder[0];
+foreach ($productsCart as $productId => $quantity){
+      $productOrderQuery = "insert into `orderproduct` (`orderId`, `productId`, `quantity`)
+                             values ({$orderId}, {$productId}, {$quantity})";
+
+      mysqli_query($connect, $productOrderQuery);
 }
-echo $productOrderQuery;
+
+
+
+
 
 
