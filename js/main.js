@@ -109,7 +109,7 @@ function verifyPassword() {             //function to change passwords
         },
 
         success: function (data) {
-            if (data == "verified"){    //Given password is correct show change password
+            if (data == "verified") {    //Given password is correct show change password
                 showContent("checked-change-password");
 
                 $.ajax({
@@ -121,17 +121,16 @@ function verifyPassword() {             //function to change passwords
                     },
 
                     success: function (data) {
-                        if (data == "verified"){
+                        if (data == "verified") {
                             showContent("checked-change-password");
 
                         }
                     }
+                });
             }
         }
     });
-
 }
-
 function placeOrder(userId) {
 
     $.ajax({ //Get json
@@ -150,6 +149,8 @@ function placeOrder(userId) {
                 },
                 success: function (data) {
                     console.log(data);
+
+
 
                     $.ajax({ //post to arduino
                         url: "http://192.168.0.20/", //IP of Arduino
