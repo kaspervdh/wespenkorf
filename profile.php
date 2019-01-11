@@ -40,16 +40,16 @@ include("nav.php");
                     </div>
                     <div class="card-content">
                         <h5><?php echo getOrderName($product["productId"]); ?></h5>
-                        <p>Quantity: <?php echo $product["quantity"]?> </p>
+                        <p>Quantity: <?php echo $product["quantity"] ?> </p>
                         <p>Status: <?php
                             $status = $order["status"];
-                            if ($status == 1){
+                            if ($status == 1) {
                                 echo "Order word verwerkt";
                             }
-                            if ($status == 2){
+                            if ($status == 2) {
                                 echo "Bij pakketdienst";
                             }
-                            if ($status == 3){
+                            if ($status == 3) {
                                 echo "Afgeleverd";
                             }
                             ?></p>
@@ -99,7 +99,8 @@ include("nav.php");
         <div class="card check-password">
             <div class="card-content">
                 <div class="input-field col s6">
-                    <input placeholder="Huidig wachtwoord" id="password-verify" type="password" class="validate verifyPassword">
+                    <input placeholder="Huidig wachtwoord" id="password-verify" type="password"
+                           class="validate verifyPassword">
                     <label for="first_name">Huidig wachtwoord</label>
                 </div>
                 <button class="btn blue" onclick="verifyPassword();">Bevestigen</button>
