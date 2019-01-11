@@ -1,5 +1,9 @@
 <?php
 require("inc/initialization.php");
+
+if(empty($_SESSION["logged"]) || $_SESSION["logged"] == 0){
+    header("Location:./login.php");
+}
 ?>
 
     <!DOCTYPE html>
