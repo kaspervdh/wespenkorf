@@ -73,7 +73,7 @@ if (!empty($username) && !empty($password) && !empty($passwordConfirm) && !empty
 }
 
 if (!empty($_SESSION["logged"] == 1)){
-    header("Location:../index.php");
+    header("Location:../admin.php");
 }
 
 

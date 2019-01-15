@@ -6,7 +6,7 @@
  * Time: 4:02 PM
  */
 
-if (isset($_SESSION["cart"])) {
+if (isset($_SESSION["cart"]) && isset($_SESSION["cartDisplay"])) {
 
     $cart = join("','", $_SESSION["cartDisplay"]);
     $selectProductsQuery = "SELECT * FROM products WHERE id IN ('". $cart ."')";

@@ -32,7 +32,17 @@ foreach ($productsCart as $productId => $quantity){
                              values ({$orderId}, {$productId}, {$quantity})";
 
       mysqli_query($connect, $productOrderQuery);
+
+    if($productOrderQuery) // will return true if succefull else it will return false
+    {
+        unset($_SESSION["cartDisplay"]);
+        unset($_SESSION["cartItemCount"]);
+    }
+    else{
+        echo "failed";
+    }
 }
+
 
 
 

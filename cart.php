@@ -30,12 +30,14 @@ if(empty($_SESSION["logged"]) || $_SESSION["logged"] == 0){
     if (empty($_SESSION["cartDisplay"])) {
 
         ?>
-        <p>Er zijn nog geen producten in de winkelwagen.</p>
+        <p class="no-products">Er zijn nog geen producten in de winkelwagen.</p>
 
         <?php
     }
     ?>
+    <p class="no-products"></p>
     <div id="product-container">
+
         <?php
         if (!empty($_SESSION["cartDisplay"])){
         foreach ($products as $product) {

@@ -1,7 +1,7 @@
 <?php
 require("inc/initialization.php");
 
-if(!empty($_SESSION["logged"]) || $_SESSION["logged"] == 1){
+if(!empty($_SESSION["logged"]) || isset($_SESSION["logged"]) == 1){
     header("Location:/index.php");
 }
 ?>

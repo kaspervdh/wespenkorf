@@ -75,6 +75,8 @@ function addToCart(productId) {
             var currentVal = parseInt($(".cart-amount").text());    //get current cart amount
             var newVal = currentVal + 1;    //add 1
             $(".cart-amount").text(newVal);     //set new amount
+            var toastHTML = '<a href="cart.php">Added to cart</a>';
+            M.toast({html: toastHTML});
         }
     });
 }
@@ -94,6 +96,8 @@ function removeFromCart(productId) {
             $(".cart-amount").text(newVal);     //set new amount
 
             $(".product" + productId).remove();
+            var toastHTML = '<a>Removed from cart</a>';
+            M.toast({html: toastHTML});
         }
     });
 
@@ -123,7 +127,8 @@ function verifyPassword() {             //function to change passwords
                     success: function (data) {
                         if (data == "verified") {
                             showContent("checked-change-password");
-
+                            var toastHTML = '<a>Password verified</a>';
+                            M.toast({html: toastHTML});
                         }
                     }
                 });
@@ -149,6 +154,17 @@ function placeOrder(userId) {
                 },
                 success: function (data) {
                     console.log(data);
+                    if (data == "failed") {
+                        var toastHTML = '<a>Error!</a>';
+                        M.toast({html: toastHTML});
+                    }
+                    else{
+                        $(".product").remove();
+                        $(".no-products").text("Er zijn nog geen producten in de winkelwagen.");
+                        $(".cart-amount").text(0);
+                        var toastHTML = '<a href="profile.php">Order placed!</a>';
+                        M.toast({html: toastHTML});
+                    }
 
 
 
