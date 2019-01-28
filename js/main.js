@@ -169,11 +169,11 @@ function placeOrder(userId) {
 
 
                     $.ajax({ //post to arduino
-                        url: "http://192.168.0.20/", //IP of Arduino
+                        url: "http://192.168.0.18/", //IP of controllino = 20
                         type: "POST",
-                        data: jsonString,
+                        data: JSON.stringify(jsonString),
                         dataType: 'jsonp',
-                        contentType: 'application/json',
+                        contentType: 'application/json; charset=utf-8',
                         crossDomain: true,
                         success: function (data) {
 
